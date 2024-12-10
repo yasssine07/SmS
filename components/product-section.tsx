@@ -8,7 +8,8 @@ interface Product {
   id: number;
   name: string;
   price: number;
-  image: string;
+  image?: string;
+  quantity: number;
 }
 
 interface ProductPageProps {
@@ -17,6 +18,7 @@ interface ProductPageProps {
 }
 
 const ProductPage: React.FC<ProductPageProps> = ({ products, addToCart }) => {
+  
   return (
     <main className="flex-1">
       <section className="w-full py-10 md:py-10 lg:py-10">
@@ -30,7 +32,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ products, addToCart }) => {
                 <Card>
                   <CardContent className="p-4">
                     <img
-                      src={product.image}
+                      src={product?.image}
                       alt={product.name}
                       className="w-full h-48 object-cover mb-4 rounded-md"
                     />

@@ -14,28 +14,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp, faFacebook } from "@fortawesome/free-brands-svg-icons";
 
+// Types for Product
 type Product = {
   id: number;
   name: string;
   price: number;
+  image?: string;
   quantity: number;
 };
-type Props = {
-  cart: Product[];
-  setCart: React.Dispatch<React.SetStateAction<Product[]>>;
-};
 
-
-
-const products = [
-  { id: 1, name: "Project Management Pro", price: 99.99, image: "https://via.placeholder.com/1000" },
-  { id: 2, name: "Code Editor Deluxe", price: 79.99, image: "https://via.placeholder.com/1000" },
-  { id: 3, name: "Database Manager Ultimate", price: 149.99, image: "https://via.placeholder.com/1000" },
-  { id: 4, name: "Cloud Storage Solution", price: 59.99, image: "https://via.placeholder.com/1000" },
-  { id: 5, name: "Secure VPN Service", price: 39.99, image: "https://via.placeholder.com/1000" },
-  { id: 6, name: "AI-Powered Analytics", price: 199.99, image: "https://via.placeholder.com/1000" },
+// Sample product data
+const products: Product[] = [
+  { id: 1, name: "Project Management Pro", price: 99.99, image: "https://via.placeholder.com/1000",quantity:0 },
+  { id: 2, name: "Code Editor Deluxe", price: 79.99, image: "https://via.placeholder.com/1000",quantity:0  },
+  { id: 3, name: "Database Manager Ultimate", price: 149.99, image: "https://via.placeholder.com/1000",quantity:0  },
+  { id: 4, name: "Cloud Storage Solution", price: 59.99, image: "https://via.placeholder.com/1000",quantity:0  },
+  { id: 5, name: "Secure VPN Service", price: 39.99, image: "https://via.placeholder.com/1000",quantity:0  },
+  { id: 6, name: "AI-Powered Analytics", price: 199.99, image: "https://via.placeholder.com/1000",quantity:0  },
 ];
 
+// News Ticker Component
 const NewsTicker = () => {
   const [news] = useState([
     "Nos solutions industrielles sont désormais disponibles dans plus de 10 pays !",
@@ -46,15 +44,13 @@ const NewsTicker = () => {
   return (
     <div className="bg-[#003399] text-white py-2">
       <div className="container px-4 md:px-6 mx-auto">
-        <div className="flex items-center justify-between">
-          <div className="flex gap-8 overflow-hidden">
-            <div className="flex animate-marquee">
-              {news.map((message, index) => (
-                <div key={index} className="mr-8 whitespace-nowrap">
-                  {message}
-                </div>
-              ))}
-            </div>
+        <div className="flex items-center overflow-hidden">
+          <div className="flex animate-marquee">
+            {news.map((message, index) => (
+              <div key={index} className="mr-8 whitespace-nowrap">
+                {message}
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -62,64 +58,81 @@ const NewsTicker = () => {
   );
 };
 
+// Contact Section Component
+const renderContactSection = () => (
+  <section id="contact" className="w-full py-20 bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="container mx-auto px-6 lg:px-12">
+      <h2 className="text-4xl font-extrabold text-center text-gray-900 dark:text-gray-100 mb-16">Contactez-Nous</h2>
+      <div className="flex flex-wrap justify-center items-center gap-10 lg:gap-16">
+        {[
+          {
+            icon: MapPin,
+            title: "Adresse",
+            description: "Soliman, Nabeul, Tunisie",
+          },
+          {
+            icon: Mail,
+            title: "Email",
+            description: (
+              <a href="mailto:contact@smartmetalsystem.com" className="text-blue-500 hover:underline">
+                contact@smartmetalsystem.com
+              </a>
+            ),
+          },
+          {
+            icon: Phone,
+            title: "Téléphone",
+            description: "T. :(+216) 36 110 321",
+          },
+          {
+            icon: Facebook,
+            title: "Facebook",
+            description: (
+              <a href="https://facebook.com/smartmetalsystem" className="text-blue-500 hover:underline">
+                facebook.com/smartmetalsystem
+              </a>
+            ),
+          },
+        ].map(({ icon: Icon, title, description }, index) => (
+          <div key={index} className="flex flex-col items-center text-center max-w-xs">
+            <div className="w-20 h-20 flex justify-center items-center bg-blue-500 text-white rounded-full mb-6 shadow-lg">
+              <Icon className="w-10 h-10" />
+            </div>
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">{title}</h3>
+            <p className="text-gray-600 dark:text-gray-400">{description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+// Landing Page Component
 const LandingPage = () => {
   const [currentPage, setCurrentPage] = useState("landing");
   const [cart, setCart] = useState<Product[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
+  // Cart handling logic
+  const addToCart = (product: Product) => {
+    const existingItem = cart.find((item) => item.id === product.id);
+    if (existingItem) {
+      setCart(
+        cart.map((item) =>
+          item.id === product.id ? { ...item, quantity: (item.quantity || 1) + 1 } : item
+        )
+      );
+    } else {
+      setCart([...cart, { ...product, quantity: 1 }]);
+    }
+  };
 
-  const renderContactSection = () => (
-    <section id="contact" className="w-full py-20 bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <div className="container mx-auto px-6 lg:px-12">
-        <h2 className="text-4xl font-extrabold text-center text-gray-900 dark:text-gray-100 mb-16">
-          Contactez-Nous
-        </h2>
-        <div className="flex flex-wrap justify-center items-center gap-10 lg:gap-16">
-          <div className="flex flex-col items-center text-center max-w-xs">
-            <div className="w-20 h-20 flex justify-center items-center bg-blue-500 text-white rounded-full mb-6 shadow-lg">
-              <MapPin className="w-10 h-10" />
-            </div>
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Adresse</h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Soliman, Nabeul, Tunisie
-            </p>
-          </div>
+  const removeFromCart = (productId: number) => {
+    setCart(cart.filter((item) => item.id !== productId));
+  };
 
-          <div className="flex flex-col items-center text-center max-w-xs">
-            <div className="w-20 h-20 flex justify-center items-center bg-blue-500 text-white rounded-full mb-6 shadow-lg">
-              <Mail className="w-10 h-10" />
-            </div>
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Email</h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              <a href="mailto:contact@smartmetalsystem.com" className="text-blue-500 hover:underline">
-                contact@smartmetalsystem.com
-              </a>
-            </p>
-          </div>
-
-          <div className="flex flex-col items-center text-center max-w-xs">
-            <div className="w-20 h-20 flex justify-center items-center bg-blue-500 text-white rounded-full mb-6 shadow-lg">
-              <Phone className="w-10 h-10" />
-            </div>
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Téléphone</h3>
-            <p className="text-gray-600 dark:text-gray-400">T. :(+216) 36 110 321</p>
-          </div>
-
-          <div className="flex flex-col items-center text-center max-w-xs">
-            <div className="w-20 h-20 flex justify-center items-center bg-blue-500 text-white rounded-full mb-6 shadow-lg">
-              <Facebook className="w-10 h-10" />
-            </div>
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Facebook</h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              <a href="https://facebook.com/smartmetalsystem" className="text-blue-500 hover:underline">
-                facebook.com/smartmetalsystem
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+  const totalPrice = cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0);
 
   const renderLandingPage = () => (
     <main className="flex-1">
@@ -207,9 +220,7 @@ const LandingPage = () => {
         </div>
       </section>
       <ServicesSection />
-      <section>
-        <CompanyPhotoSlider />
-      </section>
+      <CompanyPhotoSlider />
       <CompanyLogoSection />
       {renderContactSection()}
     </main>
@@ -217,13 +228,14 @@ const LandingPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header
+         <Header
         setCurrentPage={setCurrentPage}
         cart={cart}
         setCart={setCart}
         isCartOpen={isCartOpen}
         setIsCartOpen={setIsCartOpen}
       />
+
       {currentPage === "landing" ? renderLandingPage() : <ProductPage products={products} addToCart={addToCart} />}
       <SiteFooter />
     </div>
