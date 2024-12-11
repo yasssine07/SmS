@@ -235,13 +235,12 @@ const LandingPage = () => {
   src="/SmS.mp4"
   height="750"
   width="700"
-  muted
-  loop
-  autoPlay
-  playsinline
+  muted={true}
+  loop={true}
+  autoPlay={true}
+  playsInline={true}  // Correct, avec la majuscule "I"
   preload="metadata"
-  onmouseover="this.play()" 
-  onmouseout="this.pause()" 
+  
 >
 
 </video>
