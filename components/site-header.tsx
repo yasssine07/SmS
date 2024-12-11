@@ -61,13 +61,13 @@ const Header: React.FC<HeaderProps> = ({
         className="transition-colors hover:text-blue-600 text-gray-700"
         href="#photo"
       >
-        Galerie
+        Réalisations
       </a>
       <a
         className="transition-colors hover:text-blue-600 text-gray-700"
         href="#logo"
       >
-        Nos Clients
+        Références
       </a>
       <a
         className="transition-colors hover:text-blue-600 text-gray-700"

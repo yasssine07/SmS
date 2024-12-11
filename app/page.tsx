@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import CompanyPhotoSlider from "@/components/company-photo-slider";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ShoppingCartIcon, Download, MapPin, Mail, Phone, Facebook } from "lucide-react";
+import { ShoppingCartIcon, Download, MapPin, Mail, Phone, Facebook,  } from "lucide-react";
 import CompanyLogoSection from "@/components/company-logo";
 import ServicesSection from "@/components/services-section";
 import SiteFooter from "@/components/site-footer";
@@ -13,6 +13,7 @@ import Header from "@/components/site-header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { FaMapPin, FaEnvelope, FaPhone, FaFacebook, FaTiktok, FaLinkedin } from 'react-icons/fa';
 
 // Types for Product
 type Product = {
@@ -36,7 +37,7 @@ const products: Product[] = [
 // News Ticker Component
 const NewsTicker = () => {
   const [news] = useState([
-    "Nos solutions industrielles sont désormais disponibles dans plus de 10 pays !",
+    "Des Solutions Industrielles Sur Mesure Partout et À Tout Moment",
     "Nouveau catalogue 2024 disponible à télécharger.",
     "Suivez-nous sur nos réseaux sociaux pour plus d'informations !",
   ]);
@@ -60,36 +61,56 @@ const NewsTicker = () => {
 
 // Contact Section Component
 const renderContactSection = () => (
+  
+
   <section id="contact" className="w-full py-20 bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
     <div className="container mx-auto px-6 lg:px-12">
       <h2 className="text-4xl font-extrabold text-center text-gray-900 dark:text-gray-100 mb-16">Contactez-Nous</h2>
       <div className="flex flex-wrap justify-center items-center gap-10 lg:gap-16">
         {[
           {
-            icon: MapPin,
+            icon: FaMapPin,
             title: "Adresse",
-            description: "Soliman, Nabeul, Tunisie",
+            description: "GP1, Km 24, 8012 Selten,  Grombalia, Nabeul.",
           },
           {
-            icon: Mail,
+            icon: FaEnvelope,
             title: "Email",
             description: (
-              <a href="mailto:contact@smartmetalsystem.com" className="text-blue-500 hover:underline">
-                contact@smartmetalsystem.com
+              <a href="mailto:smartmetalsystem@gmail.com" className="text-blue-500 hover:underline">
+                smartmetalsystem@gmail.com
               </a>
             ),
           },
           {
-            icon: Phone,
+            icon: FaPhone,
             title: "Téléphone",
-            description: "T. :(+216) 36 110 321",
+            description: "T. :(+216) 39 102 142 | (+216) 53 033 166  ",
           },
           {
-            icon: Facebook,
+            icon: FaFacebook,
             title: "Facebook",
             description: (
-              <a href="https://facebook.com/smartmetalsystem" className="text-blue-500 hover:underline">
-                facebook.com/smartmetalsystem
+              <a href="https://www.facebook.com/Mohamedyasssinbha?mibextid=ZbWKwL " className="text-blue-500 hover:underline">
+                facebook.com/SMS Tunisie
+              </a>
+            ),
+          },
+          {
+            icon: FaTiktok,
+            title: "TikTok",
+            description: (
+              <a href="https://www.tiktok.com/@smart_metal_system?_t=8s8RfV8BLAz&_r=1 " className="text-blue-500 hover:underline">
+                tiktok.com/@smartmetalsystem
+              </a>
+            ),
+          },
+          {
+            icon: FaLinkedin,
+            title: "LinkedIn",
+            description: (
+              <a href="https://www.linkedin.com/company/smartmetalsystem" className="text-blue-500 hover:underline">
+                linkedin.com/company/smartmetalsystem
               </a>
             ),
           },
@@ -105,6 +126,7 @@ const renderContactSection = () => (
       </div>
     </div>
   </section>
+
 );
 
 // Landing Page Component
@@ -145,7 +167,7 @@ const LandingPage = () => {
 
           .animate-marquee {
             display: flex;
-            animation: marquee 10s linear infinite;
+            animation: marquee 40s linear infinite;
           }
         `}
       </style>
@@ -173,14 +195,14 @@ const LandingPage = () => {
 
                 <div className="flex space-x-4">
                   <a
-                    href="mailto:contact@smartmetalsystem.com"
+                    href="mailto:smartmetalsystem@gmail.com"
                     className="flex items-center justify-center w-10 h-10 border border-gray-300 text-gray-700 hover:bg-blue-600 hover:text-white rounded-full"
                     title="Email"
                   >
                     <FontAwesomeIcon icon={faEnvelope} size="lg" />
                   </a>
                   <a
-                    href="https://wa.me/1234567890"
+                    href="https://wa.me/53 033 166"
                     className="flex items-center justify-center w-10 h-10 border border-gray-300 text-gray-700 hover:bg-green-500 hover:text-white rounded-full"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -189,7 +211,7 @@ const LandingPage = () => {
                     <FontAwesomeIcon icon={faWhatsapp} size="lg" />
                   </a>
                   <a
-                    href="https://facebook.com/yourpage"
+                    href="https://www.facebook.com/Mohamedyasssinbha?mibextid=ZbWKwL"
                     className="flex items-center justify-center w-10 h-10 border border-gray-300 text-gray-700 hover:bg-blue-800 hover:text-white rounded-full"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -198,7 +220,7 @@ const LandingPage = () => {
                     <FontAwesomeIcon icon={faFacebook} size="lg" />
                   </a>
                   <a
-                    href="tel:+1234567890"
+                    href="tel:+216 39 102 142"
                     className="flex items-center justify-center w-10 h-10 border border-gray-300 text-gray-700 hover:bg-teal-600 hover:text-white rounded-full"
                     title="Téléphone"
                   >
@@ -208,13 +230,21 @@ const LandingPage = () => {
               </div>
             </div>
             <div className="relative mx-auto lg:order-last">
-              <img
-                alt="Hero"
-                className="relative z-10 w-full h-[auto] max-w-[700px] aspect-[4/3] object-cover object-center"
-                height="750"
-                src="/SmS.png"
-                width="700"
-              />
+            <video
+        className="relative z-10 w-full max-w-[700px] aspect-[4/3] object-cover object-center"
+  src="/SmS.mp4"
+  height="750"
+  width="700"
+  muted
+  loop
+  autoPlay
+  playsinline
+  preload="metadata"
+  onmouseover="this.play()" 
+  onmouseout="this.pause()" 
+>
+
+</video>
             </div>
           </div>
         </div>

@@ -4,10 +4,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const photos = [
-  { id: 1, src: "/1001.jpg", alt: "Production en cours", caption: "Production en cours" },
-  { id: 2, src: "/1002.jpg", alt: "Équipement moderne", caption: "Équipement moderne" },
-  { id: 3, src: "/1003.jpg", alt: "Installation industrielle", caption: "Installation industrielle" },
-  { id: 4, src: "/1004.jpg", alt: "Équipe au travail", caption: "Équipe au travail" },
+  { id: 1, src: "/realis/stockage.jpg", alt: "Stockage", caption: "Mezzanine 500M² capacité 500 kg/M²" },
+  { id: 2, src: "/realis/2-environnement.jpg", alt: "environnement", caption: "Cabine de stockage produit inflammable avec bac de rétention " },
+  { id: 3, src: "/realis/3-infrastructure.jpg", alt: "infrastructure", caption: "Bâtiment modulaire 2* 18M² -cuisine – réfectoire et 2 WC H-F" },
+  { id: 4, src: "/realis/4-manutention.jpg", alt: "Manutension", caption: "Monte-charge 6mtr capacité 1000 KG" },
+  { id: 5, src: "/realis/5-mobilier.jpg", alt: "mobilier", caption: "Établie et armoire laboratoire " },
+  { id: 6, src: "/realis/6-sécurité.jpg", alt: "Securité", caption: "SAS automatique pour mezzanine " },
+  { id: 7, src: "/realis/7-transitique.jpg", alt: "Transitique", caption: "Linge d’assemblage automa sé avec system de calcule TRS " },
+  { id: 8, src: "/realis/8-ingénieurie.jpg", alt: "ingénieurie ", caption: "Tunnel de séchage et de déshydratation  pour produit alimentaire " },
 ];
 
 const CompanyPhotoSlider = () => {
@@ -34,7 +38,7 @@ const CompanyPhotoSlider = () => {
           id="gallery-heading"
           className="text-3xl font-extrabold text-center mb-6 text-black dark:text-white"
         >
-          Galerie de l'Entreprise
+          Réalisations
         </h2>
         <Slider {...settings}>
           {photos.map((photo) => (
