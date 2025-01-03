@@ -1,4 +1,4 @@
-import Slider from 'react-slick';
+import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,8 +10,8 @@ const photos = [
   { id: 4, src: "/realis/4-manutention.jpg", alt: "Manutension", caption: "Monte-charge 6mtr capacité 1000 KG" },
   { id: 5, src: "/realis/5-mobilier.jpg", alt: "mobilier", caption: "Établie et armoire laboratoire " },
   { id: 6, src: "/realis/6-sécurité.jpg", alt: "Securité", caption: "SAS automatique pour mezzanine " },
-  { id: 7, src: "/realis/7-transitique.jpg", alt: "Transitique", caption: "Linge d’assemblage automa sé avec system de calcule TRS " },
-  { id: 8, src: "/realis/8-ingénieurie.jpg", alt: "ingénieurie ", caption: "Tunnel de séchage et de déshydratation  pour produit alimentaire " },
+  { id: 7, src: "/realis/7-transitique.jpg", alt: "Transitique", caption: "Ligne d’assemblage automatique avec système de calcul TRS " },
+  { id: 8, src: "/realis/8-ingénieurie.jpg", alt: "ingénieurie ", caption: "Tunnel de séchage et de déshydratation pour produit alimentaire " },
 ];
 
 const CompanyPhotoSlider = () => {
@@ -19,12 +19,27 @@ const CompanyPhotoSlider = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 1, // Affiche 3 images à la fois
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-    arrows: false,
-    adaptiveHeight: true,
+    arrows: true, // Ajoute des flèches de navigation
+    responsive: [
+      {
+        breakpoint: 1024, // Écran moyen
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 768, // Écran mobile
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -42,21 +57,18 @@ const CompanyPhotoSlider = () => {
         </h2>
         <Slider {...settings}>
           {photos.map((photo) => (
-            <div
-              key={photo.id}
-              className="flex flex-col items-center justify-center h-full"
-            >
-              <div className="flex justify-center items-center w-full">
+            <div key={photo.id} className="p-4">
+              <div className="flex flex-col items-center justify-center h-full">
                 <img
                   src={photo.src}
                   alt={photo.alt}
-                  className="max-w-[900px] w-auto h-auto rounded-lg shadow-lg object-contain"
+                  className="max-w-full max-h-[550px] w-auto h-auto rounded-lg shadow-lg object-cover"
                   loading="lazy"
                 />
+                <p className="mt-4 text-gray-700 dark:text-gray-300 text-center">
+                  {photo.caption}
+                </p>
               </div>
-              <p className="mt-4 text-gray-700 dark:text-gray-300 text-center">
-                {photo.caption}
-              </p>
             </div>
           ))}
         </Slider>

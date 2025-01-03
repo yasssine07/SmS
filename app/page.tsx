@@ -37,8 +37,8 @@ const products: Product[] = [
 // News Ticker Component
 const NewsTicker = () => {
   const [news] = useState([
-    "Des Solutions Industrielles Sur Mesure Partout et À Tout Moment",
-    "Nouveau catalogue 2024 disponible à télécharger.",
+    "Concepteur et Fabricant de Solution Industriel Sur Mesure Depuis 2014",
+    "Nouveau catalogue 2025 disponible à télécharger.",
     "Suivez-nous sur nos réseaux sociaux pour plus d'informations !",
   ]);
 
@@ -109,7 +109,7 @@ const renderContactSection = () => (
             icon: FaLinkedin,
             title: "LinkedIn",
             description: (
-              <a href="https://www.linkedin.com/company/smartmetalsystem" className="text-blue-500 hover:underline">
+              <a href="https://www.linkedin.com/company/smart-metal-system/about/" className="text-blue-500 hover:underline">
                 linkedin.com/company/smartmetalsystem
               </a>
             ),
@@ -177,9 +177,9 @@ const LandingPage = () => {
           <div className="grid gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_700px] items-center">
             <div className="flex flex-col justify-center space-y-4 text-center lg:text-left">
               <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl xl:text-6xl/none text-black dark:text-white">
-                <span style={{ color: '#003399' }}>Des Solutions Industrielles</span>
+                <span style={{ color: '#003399' }}>Concepteur et Fabricant de Solution Industriel</span>
                 <span style={{ color: '#ff0000' }}> Sur Mesure</span>, 
-                <span style={{ color: '#003399' }}> Partout et À Tout Moment</span>
+                <span style={{ color: '#003399' }}> Depuis 2014</span>
               </h1>
               <p className="max-w-[600px] text-gray-800 dark:text-gray-300 md:text-xl mx-auto lg:mx-0">
                 Chez Smart Metal System, nous mettons à votre service une expertise technique de pointe, des équipements modernes et une équipe dédiée pour répondre à vos besoins industriels avec efficacité et précision.
